@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juanca · 8,766 días alrededor del sol</title>
+<meta name="description" content="Sábado 24 de octubre, 5:30 p.m. Confirma tu asistencia y elige la canción que no puede faltar.">
+<meta name="theme-color" content="#0B1530">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Juanca · 8,766 días alrededor del sol">
+<meta property="og:description" content="Sábado 24 de octubre, 5:30 p.m. Confirma tu asistencia y elige la canción que no puede faltar.">
+<!-- Fase 5: cuando tengas el link público, agrega la imagen de vista previa:
+<meta property="og:image" content="https://TU-USUARIO.github.io/TU-REPO/preview.png"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noche: #0B1530;
+    --noche-2: #0F1B3C;
+    --oro: #C9A65A;
+    --oro-claro: #E2CB92;
+    --crema: #F1EADB;
+    --suave: #9AA4BF;
+    --error: #E7A59C;
+    --linea: rgba(201, 166, 90, 0.45);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--noche);
+    color: var(--crema);
+    font-family: 'Jost', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  #cielo { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+  main { position: relative; z-index: 1; max-width: 460px; margin: 0 auto; padding: 28px 16px 40px; }
+
+  .marco {
+    position: relative;
+    border: 1px solid var(--linea);
+    padding: 6px;
+  }
+  .marco-interior {
+    border: 1px solid var(--linea);
+    padding: 48px 24px 40px;
+    background: rgba(11, 21, 48, 0.55);
+  }
+
+  .centro { text-align: center; }
+  .sobre { font-size: 11px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--oro); margin: 0; padding-left: 0.42em; }
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  .ornamento { display: block; width: 120px; height: 14px; margin: 22px auto; }
+
+  h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 4rem; line-height: 1; letter-spacing: 0.04em; margin: 18px 0 0; color: var(--crema); }
+  .lema { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.35rem; color: var(--oro-claro); margin: 14px 0 0; }
+  .cifra { font-style: normal; letter-spacing: 0.04em; }
+
+  .bloque { margin: 0; }
+  .bloque + .bloque { margin-top: 26px; }
+  .rotulo { display: block; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--suave); padding-left: 0.32em; }
+  .dato { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.45rem; line-height: 1.35; margin-top: 4px; }
+  .dato-sub { display: block; font-size: 0.95rem; color: var(--crema); opacity: 0.85; }
+
+  .enlace {
+    display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--oro-claro); text-decoration: none; border-bottom: 1px solid var(--linea); padding: 2px 0 3px 0.28em;
+  }
+
+  .limite { margin: 34px 0 0; font-size: 0.95rem; color: var(--suave); }
+  .limite em { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; color: var(--oro-claro); }
+
+  .separador { height: 1px; background: var(--linea); margin: 40px auto; width: 56px; }
+
+  h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.9rem; line-height: 1.2; margin: 0; text-align: center; }
+  .intro { text-align: center; color: var(--suave); margin: 8px 0 28px; font-size: 0.95rem; }
+
+  .campo { margin: 0 0 22px; border: 0; padding: 0; }
+  .campo > label:not(.check), legend { display: block; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--suave); margin-bottom: 4px; padding: 0; }
+  input[type="text"] {
+    width: 100%; padding: 8px 0 10px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem;
+    color: var(--crema); background: transparent; border: 0; border-bottom: 1px solid rgba(154, 164, 191, 0.45);
+    border-radius: 0; outline: none;
+  }
+  input[type="text"]::placeholder { color: rgba(154, 164, 191, 0.55); font-style: italic; }
+  input[type="text"]:focus { border-bottom-color: var(--oro); }
+  input[aria-invalid="true"] { border-bottom-color: var(--error); }
+
+  .opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  .opcion input { position: absolute; opacity: 0; pointer-events: none; }
+  .opcion span {
+    display: block; text-align: center; padding: 10px; cursor: pointer;
+    font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem;
+    border: 1px solid rgba(154, 164, 191, 0.4);
+  }
+  .opcion input:checked + span { border-color: var(--oro); color: var(--oro-claro); background: rgba(201, 166, 90, 0.08); }
+  .opcion input:focus-visible + span { outline: 1px solid var(--oro); outline-offset: 3px; }
+  .opciones.invalido .opcion span { border-color: var(--error); }
+
+  .check { color: var(--crema); display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; cursor: pointer; }
+  .check input {
+    appearance: none; -webkit-appearance: none; width: 18px; height: 18px; margin: 4px 0 0;
+    border: 1px solid var(--oro); background: transparent; display: grid; place-content: center; cursor: pointer;
+  }
+  .check input::after { content: ''; width: 8px; height: 8px; background: var(--oro); transform: scale(0); transition: transform 0.15s; }
+  .check input:checked::after { transform: scale(1); }
+  .check input:focus-visible { outline: 1px solid var(--oro-claro); outline-offset: 3px; }
+  .check .texto { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; }
+  .check small { display: block; font-family: 'Jost', system-ui, sans-serif; color: var(--suave); font-size: 0.85rem; }
+
+  .msg-error { color: var(--error); font-size: 0.85rem; margin: 6px 0 0; }
+  .msg-error:empty { display: none; }
+
+  .boton {
+    display: block; width: 100%; margin-top: 30px; padding: 15px; cursor: pointer;
+    font-family: 'Jost', system-ui, sans-serif; font-weight: 400; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--noche); background: var(--oro); border: 1px solid var(--oro); border-radius: 0;
+  }
+  .boton:hover { background: var(--oro-claro); }
+  .boton:disabled { opacity: 0.6; cursor: wait; }
+  .nota { text-align: center; font-size: 0.85rem; color: var(--suave); margin: 12px 0 0; }
+
+  .exito p { margin: 10px 0 0; }
+  .exito .cancion { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.25rem; color: var(--oro-claro); }
+  .enlace-boton { background: none; border: 0; cursor: pointer; margin-top: 26px; font-family: inherit; }
+
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<canvas id="cielo" aria-hidden="true"></canvas>
+
+<main>
+  <div class="marco"><div class="marco-interior">
+
+    <header class="centro">
+      <p class="sobre">Te invito a celebrar</p>
+      <h1>Juanca</h1>
+      <p class="lema"><span class="cifra">8,766</span> días alrededor del sol</p>
+    </header>
+
+    <svg class="ornamento" viewBox="0 0 120 14" aria-hidden="true">
+      <line x1="0" y1="7" x2="48" y2="7" stroke="#C9A65A" stroke-width="0.75"/>
+      <line x1="72" y1="7" x2="120" y2="7" stroke="#C9A65A" stroke-width="0.75"/>
+      <path d="M60 1 L62 7 L60 13 L58 7 Z" fill="#C9A65A"/>
+      <circle cx="52" cy="7" r="1.2" fill="#C9A65A"/>
+      <circle cx="68" cy="7" r="1.2" fill="#C9A65A"/>
+    </svg>
+
+    <div class="centro">
+      <p class="bloque">
+        <span class="rotulo">Sábado</span>
+        <span class="dato">24 de octubre · 5:30 p.m.</span>
+      </p>
+      <p class="bloque">
+        <span class="rotulo">Lugar</span>
+        <span class="dato">Calle Girasol, Ozama</span>
+        <span class="dato-sub">Santo Domingo Oeste</span>
+        <a class="enlace" href="https://maps.app.goo.gl/MA5piYvRC8nRuLoY8" target="_blank" rel="noopener">Ver ubicación</a>
+      </p>
+      <p class="bloque">
+        <span class="rotulo">Música en vivo</span>
+        <span class="dato">Ulloa Swing</span>
+        <span class="dato-sub">Ven listo para bailar</span>
+      </p>
+
+      <p class="limite">Favor confirmar antes del <em>miércoles 21 de octubre</em></p>
+    </div>
+
+    <div class="separador" aria-hidden="true"></div>
+
+    <section id="seccion-form">
+      <h2>Confirmación</h2>
+      <p class="intro">Y cuéntame qué canción no puede faltar esa noche.</p>
+
+      <form id="form" novalidate>
+        <div class="campo">
+          <label for="nombre">Nombre y apellido</label>
+          <input type="text" id="nombre" name="nombre" maxlength="80" autocomplete="name" aria-describedby="err-nombre">
+          <p class="msg-error" id="err-nombre"></p>
+        </div>
+
+        <fieldset class="campo">
+          <legend>Sexo</legend>
+          <div class="opciones" id="opciones-sexo">
+            <label class="opcion"><input type="radio" name="sexo" value="Hombre"><span>Hombre</span></label>
+            <label class="opcion"><input type="radio" name="sexo" value="Mujer"><span>Mujer</span></label>
+          </div>
+          <p class="msg-error" id="err-sexo"></p>
+        </fieldset>
+
+        <div class="campo">
+          <label for="cancion">La canción que no puede faltar</label>
+          <input type="text" id="cancion" name="cancion" maxlength="150" placeholder="Canción y artista" aria-describedby="err-cancion">
+          <p class="msg-error" id="err-cancion"></p>
+        </div>
+
+        <div class="campo">
+          <label class="check">
+            <input type="checkbox" id="acompanante" name="acompanante">
+            <span class="texto">Asistiré con mi pareja<small>El acompañante es exclusivo para parejas.</small></span>
+          </label>
+        </div>
+
+        <button type="submit" class="boton" id="boton">Confirmar asistencia</button>
+        <p class="nota">Al enviar, confirmas tu asistencia.</p>
+        <p class="msg-error centro" id="err-envio" role="alert"></p>
+      </form>
+    </section>
+
+    <section class="centro exito" id="seccion-exito" hidden>
+      <h2>Gracias, <span id="texto-nombre"></span></h2>
+      <p id="texto-exito"></p>
+      <p>Tu canción<br><span class="cancion" id="texto-cancion"></span></p>
+      <button type="button" class="enlace enlace-boton" id="otra">Confirmar a otra persona</button>
+    </section>
+
+    <section class="centro" id="seccion-cerrado" hidden>
+      <h2>Confirmaciones cerradas</h2>
+      <p class="intro">El plazo para confirmar terminó el miércoles 21 de octubre. Si necesitas confirmar, escríbele directamente a Juanca.</p>
+    </section>
+
+  </div></div>
+</main>
+
+<script>
+  const CONFIG = {
+    URL_SCRIPT: 'https://script.google.com/macros/s/AKfycbx8fivnKq1u7oZia4IVCjaBJuvO6Ksljt7itVV_ouPcRmijW70JwPH6K-GFR-BgvLs/exec',
+    // true simula el envío sin guardar nada; false guarda en la hoja.
+    MODO_PRUEBA: false,
+    CIERRE: new Date('2026-10-22T00:00:00-04:00')
+  };
+
+  const form = document.getElementById('form');
+  const boton = document.getElementById('boton');
+  const errEnvio = document.getElementById('err-envio');
+
+  if (new Date() >= CONFIG.CIERRE) {
+    document.getElementById('seccion-form').hidden = true;
+    document.getElementById('seccion-cerrado').hidden = false;
+  }
+
+  function marcarError(id, mensaje) {
+    document.getElementById('err-' + id).textContent = mensaje;
+    const input = document.getElementById(id);
+    if (input) input.setAttribute('aria-invalid', mensaje ? 'true' : 'false');
+    if (id === 'sexo') document.getElementById('opciones-sexo').classList.toggle('invalido', !!mensaje);
+  }
+
+  form.addEventListener('input', (e) => {
+    const nombre = e.target.name;
+    if (nombre === 'nombre' || nombre === 'cancion' || nombre === 'sexo') marcarError(nombre, '');
+    errEnvio.textContent = '';
+  });
+
+  function leerDatos() {
+    const sexo = form.querySelector('input[name="sexo"]:checked');
+    return {
+      nombre: form.nombre.value.trim(),
+      sexo: sexo ? sexo.value : '',
+      cancion: form.cancion.value.trim(),
+      acompanante: form.acompanante.checked ? 'Sí' : 'No'
+    };
+  }
+
+  function validar(d) {
+    let primero = null;
+    if (!d.nombre) { marcarError('nombre', 'Escribe tu nombre.'); primero = primero || 'nombre'; }
+    if (!d.sexo) { marcarError('sexo', 'Elige una opción.'); primero = primero || 'sexo'; }
+    if (!d.cancion) { marcarError('cancion', 'Escribe tu canción.'); primero = primero || 'cancion'; }
+    if (primero) {
+      const el = primero === 'sexo' ? form.querySelector('input[name="sexo"]') : document.getElementById(primero);
+      el.focus();
+      return false;
+    }
+    return true;
+  }
+
+  async function enviar(datos) {
+    if (CONFIG.MODO_PRUEBA) {
+      await new Promise((r) => setTimeout(r, 700));
+      return { ok: true };
+    }
+    const respuesta = await fetch(CONFIG.URL_SCRIPT, { method: 'POST', body: new URLSearchParams(datos) });
+    return respuesta.json();
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errEnvio.textContent = '';
+    const datos = leerDatos();
+    if (!validar(datos)) return;
+
+    boton.disabled = true;
+    boton.textContent = 'Enviando…';
+    try {
+      const resultado = await enviar(datos);
+      if (!resultado || !resultado.ok) throw new Error((resultado && resultado.mensaje) || 'Error');
+      document.getElementById('texto-nombre').textContent = datos.nombre.split(' ')[0];
+      document.getElementById('texto-exito').textContent =
+        datos.acompanante === 'Sí' ? 'Tu asistencia y la de tu pareja han sido confirmadas.' : 'Tu asistencia ha sido confirmada.';
+      document.getElementById('texto-cancion').textContent = '“' + datos.cancion + '”';
+      document.getElementById('seccion-form').hidden = true;
+      document.getElementById('seccion-exito').hidden = false;
+      document.getElementById('seccion-exito').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      errEnvio.textContent = 'No pudimos guardar tu confirmación. Revisa tu conexión e intenta de nuevo.';
+    } finally {
+      boton.disabled = false;
+      boton.textContent = 'Confirmar asistencia';
+    }
+  });
+
+  document.getElementById('otra').addEventListener('click', () => {
+    form.reset();
+    document.getElementById('seccion-exito').hidden = true;
+    document.getElementById('seccion-form').hidden = false;
+    document.getElementById('nombre').focus();
+  });
+
+  (function cielo() {
+    const canvas = document.getElementById('cielo');
+    const ctx = canvas.getContext('2d');
+    function dibujar() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = innerWidth * dpr;
+      canvas.height = innerHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const total = Math.round((innerWidth * innerHeight) / 9000);
+      for (let i = 0; i < total; i++) {
+        ctx.globalAlpha = Math.random() * 0.45 + 0.15;
+        ctx.fillStyle = Math.random() < 0.2 ? '#E2CB92' : '#F1EADB';
+        ctx.beginPath();
+        ctx.arc(Math.random() * innerWidth, Math.random() * innerHeight, Math.random() * 0.8 + 0.3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    dibujar();
+    let t;
+    addEventListener('resize', () => { clearTimeout(t); t = setTimeout(dibujar, 200); });
+  })();
+</script>
+</body>
+</html>
